@@ -1,0 +1,291 @@
+/* ---------- Tokens ---------- */
+.db-page {
+  --db-bg: #f1f5f9;
+  --db-surface: #ffffff;
+  --db-soft: #f8fafc;
+  --db-text: #0f172a;
+  --db-muted: #64748b;
+  --db-accent: #4f46e5;
+  --db-accent-dark: #4338ca;
+  --db-accent-soft: #eef2ff;
+  --db-danger: #dc2626;
+}
+
+/* ---------- Page ---------- */
+.db-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--db-bg);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--db-text);
+}
+
+.db-page *,
+.db-page *::before,
+.db-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Card ---------- */
+.db-card {
+  width: 100%;
+  max-width: 440px;
+  overflow: hidden;
+  background: var(--db-surface);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(100, 116, 139, 0.35);
+}
+
+.db-card--small {
+  max-width: 380px;
+  padding: 40px 32px;
+  text-align: center;
+}
+
+/* ---------- Banner ---------- */
+.db-banner {
+  position: relative;
+  height: 144px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed 55%, #d946ef);
+  overflow: hidden;
+}
+
+.db-banner-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.db-banner-circle--one {
+  width: 160px;
+  height: 160px;
+  top: -40px;
+  right: -40px;
+}
+
+.db-banner-circle--two {
+  width: 128px;
+  height: 128px;
+  bottom: -48px;
+  left: 32px;
+}
+
+.db-banner-label {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Avatar ---------- */
+.db-avatar-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -64px;
+  position: relative;
+}
+
+.db-avatar-ring {
+  padding: 6px;
+  background: var(--db-surface);
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+}
+
+.db-avatar {
+  display: block;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.db-avatar--initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0e7ff;
+  color: #4338ca;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* ---------- Body ---------- */
+.db-body {
+  padding: 20px 32px 32px;
+  text-align: center;
+}
+
+.db-greeting {
+  margin: 0;
+  font-size: 14px;
+  color: var(--db-muted);
+}
+
+.db-name {
+  margin: 4px 0 0;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Detail rows ---------- */
+.db-details {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.db-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--db-soft);
+  border-radius: 16px;
+}
+
+.db-row-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--db-surface);
+  color: var(--db-accent);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+}
+
+.db-row-text {
+  flex: 1;
+  min-width: 0; /* lets long emails truncate instead of overflowing */
+}
+
+.db-row-label {
+  margin: 0;
+  font-size: 12px;
+  color: var(--db-muted);
+}
+
+.db-row-value {
+  margin: 2px 0 0;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.db-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------- Copy button ---------- */
+.db-copy {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--db-accent);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.db-copy:hover {
+  background: var(--db-accent-soft);
+}
+
+/* ---------- Buttons ---------- */
+.db-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.db-btn--primary {
+  margin-top: 28px;
+  background: var(--db-accent);
+}
+
+.db-btn--primary:hover {
+  background: var(--db-accent-dark);
+}
+
+.db-btn--logout {
+  margin-top: 32px;
+  background: var(--db-text);
+}
+
+.db-btn--logout:hover {
+  background: var(--db-danger);
+}
+
+/* ---------- Keyboard focus ---------- */
+.db-btn:focus-visible,
+.db-copy:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
+/* ---------- Signed-out state ---------- */
+.db-empty-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--db-accent-soft);
+  color: var(--db-accent);
+  border-radius: 16px;
+}
+
+.db-empty-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.db-empty-text {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--db-muted);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 420px) {
+  .db-body {
+    padding: 20px 20px 24px;
+  }
+  .db-card--small {
+    padding: 32px 20px;
+  }
+}
