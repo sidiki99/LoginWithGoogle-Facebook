@@ -8,8 +8,18 @@ require("./models/dbConnection")
 const port = process.env.port || 8001;
 const authRouter = require("./routers/authRouter")
 const cors = require("cors")
+const cookieParser = require ("cookie-parser");
 
-app.use(cors())
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
+);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.get("/",(req,res)=>{
   res.send("Hello From NOde JS")
 })

@@ -9,6 +9,11 @@ const UserSchema= new mongoose.Schema({
     required:true,
     unique:true
   },
+   facebookId: {
+      type: String,
+      unique: true,
+      sparse: true,
+    },
   image:{
     type:String
   }

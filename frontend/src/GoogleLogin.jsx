@@ -1,43 +1,32 @@
+
 import { useGoogleLogin } from "@react-oauth/google";
-import { googleAuth } from "./api";
-import { useNavigate } from "react-router-dom";
+
 
 export default function GoogleLogin() {
-  const navigate = useNavigate();
 
-  const googleResponse = async (authResult) => {
-    try {
-      if (authResult.code) {
-        const result = await googleAuth(authResult.code);
 
-        const { name, email, image } = result.data.user;
-
-        console.log(result.data.user);
-        console.log(result.data.token);
-
-        const token = result.data.token;
-
-        const obj = {
-          email,
-          name,
-          image,
-          token,
-        };
-
-        localStorage.setItem("userInfo", JSON.stringify(obj));
-
-        navigate("/dashboard");
-      }
-    } catch (error) {
-      console.log("Error in Google Response:", error);
-    }
+  const handleFacebookLogin = () => {
+    window.location.href = "http://localhost:8001/facebook";
   };
 
   const googleLogin = useGoogleLogin({
-    onSuccess: googleResponse,
-    onError: googleResponse,
     flow: "auth-code",
+
+    onSuccess: (authResult) => {
+      console.log("Google authorization code:", authResult.code);
+
+      window.location.href =
+        `http://localhost:8001/google?code=${encodeURIComponent(
+          authResult.code
+        )}`;
+    },
+
+    onError: (error) => {
+      console.log("Google Login Error:", error);
+    },
   });
+
+
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-100 via-white to-indigo-100 px-4">
@@ -110,6 +99,24 @@ export default function GoogleLogin() {
 
             Continue with Google
           </button>
+
+          {/* Facebook Login Button */}
+            <button
+              onClick={handleFacebookLogin}
+              className="mt-5 flex w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition duration-200 hover:border-indigo-200 hover:bg-slate-50 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-indigo-100 active:scale-[0.98]"
+            >
+              {/* Facebook Icon */}
+              <svg
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="#1877F2"
+                aria-hidden="true"
+              >
+                <path d="M24 12a12 12 0 1 0-13.875 11.85v-8.38H7.078V12h3.047V9.412c0-3.008 1.792-4.67 4.533-4.67 1.312 0 2.686.234 2.686.234v2.953h-1.513c-1.49 0-1.954.925-1.954 1.874V12h3.328l-.532 3.47h-2.796v8.38A12.003 12.003 0 0 0 24 12Z" />
+              </svg>
+
+              Continue with Facebook
+            </button>
 
           {/* Divider */}
           <div className="my-7 flex items-center gap-3">
